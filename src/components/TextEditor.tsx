@@ -102,22 +102,17 @@ const handlePrint = () => {
       </style>
     `;
   
-    // Clone the editor content to print
     const printContent = editorContent?.cloneNode(true) as HTMLElement;
   
-    // Get the screen width and height
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
   
-    // Set the width and height for the print window
     const windowWidth = 800;
     const windowHeight = 600;
   
-    // Calculate the center position
     const left = (screenWidth - windowWidth) / 2;
     const top = (screenHeight - windowHeight) / 2;
   
-    // Create a new window for printing content, centered on the screen
     const printWindow = window.open(
       '',
       '',
@@ -125,7 +120,6 @@ const handlePrint = () => {
     );
   
     if (printWindow) {
-      // Inject the styles and content into the print window
       printWindow.document.write(`
         <html>
           <head>
@@ -138,13 +132,11 @@ const handlePrint = () => {
         </html>
       `);
   
-      // Close the document stream to finish the document
       printWindow.document.close();
   
-      // Assign the onload event handler
       printWindow.onload = () => {
-        printWindow.print();  // Open the print dialog
-        printWindow.close();  // Close the print window once the dialog is opened
+        printWindow.print();  
+        printWindow.close();  
       };
     }
   };
